@@ -16,3 +16,11 @@ void RedisServer::shutdown() {
     }
     std::cout << "Server Shutdown Complete!\n";
 }
+
+void RedisServer::run() {
+    server_socket = socket(AF_INET, SOCK_STREAM, 0);
+    if (server_socket < 0) {
+        std::cerr << "Error Creating Server Socket\n";
+        return;
+    }
+}
