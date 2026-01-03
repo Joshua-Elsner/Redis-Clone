@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <netinet/in.h>
 
 static RedisServer* globalServer = nullptr;
 
@@ -23,4 +24,9 @@ void RedisServer::run() {
         std::cerr << "Error Creating Server Socket\n";
         return;
     }
+
+    int opt = 1;
+    setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+
+    sockaddr_in serverAddr{};
 }
