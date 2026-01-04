@@ -32,4 +32,13 @@ void RedisServer::run() {
 
     // Initialize address struct to hold IP and port info
     sockaddr_in serverAddr{};
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(port);
+    serverAddr.sin_addr.s_addr = INADDR_ANY;
+
+    // Bind the server socket to the IP and port
+    if(bind(server_socket, (struct sockaddr*)&serverAddr, sizeof(serverAddr)) < 0) {
+        std::cerr << "Error Binding Server Socket\n";
+        return;
+    }
 }
