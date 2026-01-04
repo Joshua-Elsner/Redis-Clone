@@ -19,14 +19,17 @@ void RedisServer::shutdown() {
 }
 
 void RedisServer::run() {
+    // Get file descriptor for IPv4/TCP
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (server_socket < 0) {
         std::cerr << "Error Creating Server Socket\n";
         return;
     }
 
+    // Enable reusable addresses to resolve issues with TIME_WAIT
     int opt = 1;
     setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
+    // Initialize address struct to hold IP and port info
     sockaddr_in serverAddr{};
 }
