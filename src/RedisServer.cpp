@@ -37,8 +37,16 @@ void RedisServer::run() {
     serverAddr.sin_addr.s_addr = INADDR_ANY;
 
     // Bind the server socket to the IP and port
-    if(bind(server_socket, (struct sockaddr*)&serverAddr, sizeof(serverAddr)) < 0) {
+    if (bind(server_socket, (struct sockaddr*)&serverAddr, sizeof(serverAddr)) < 0) {
         std::cerr << "Error Binding Server Socket\n";
         return;
     }
+
+    if (listen(server_socket, 10) < 0) {
+        std::cerr << "Error Listening on Server Socket\n";
+        return;
+    }
+
+    std::cout << "Redis Server Listening on Port " << port << "\n";
+
 }
