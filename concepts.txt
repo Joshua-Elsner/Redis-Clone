@@ -9,3 +9,7 @@
 9.Singleton Patterns
 10.Bitwise Operators
 11.std::
+
+RedisServer class
+
+RedisDatabase class
