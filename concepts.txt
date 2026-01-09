@@ -13,3 +13,5 @@
 RedisServer class
 
 RedisDatabase class
+
+RedisCommandHandler class
