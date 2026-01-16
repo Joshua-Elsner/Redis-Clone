@@ -1,4 +1,4 @@
-#include <include/RedisCommandHandler.h>
+#include "RedisCommandHandler.h"
 #include <vector>
 #include <sstream>
 
@@ -37,7 +37,7 @@ std::vector<std::string> parseRespCommand(const std::string &input) {
 
     for (int i = 0; i < numElements; i++) {
         if (pos >= input.size() || input[pos] != '$') break; // Format error
-        pos++; //skip '$'
+        pos++; // Skip '$'
 
         crlf = input.find("\r\n", pos);
         if (crlf == std::string::npos) break;
@@ -51,3 +51,5 @@ std::vector<std::string> parseRespCommand(const std::string &input) {
     }
     return tokens;
 }
+
+RedisCommandHandler::RedisCommandHandler() {}

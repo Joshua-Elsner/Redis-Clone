@@ -2,6 +2,9 @@
 #define REDIS_COMMAND_HANDLER_H
 
 #include<string>
+#include<vector>
+
+std::vector<std::string> parseRespCommand(const std::string &input);
 
 class RedisCommandHandler {
 public:
